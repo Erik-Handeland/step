@@ -7,7 +7,15 @@
   <title>Work Experience</title>
   <link rel="stylesheet" type="text/css" href="../css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
+  <script>
+    if (
+      localStorage.getItem("color-mode") === "dark" ||
+      (window.matchMedia("(prefers-color-scheme: dark)").matches &&
+        !localStorage.getItem("color-mode"))
+    ) {
+      document.documentElement.setAttribute("color-mode", "dark");
+    }
+  </script></head>
 
 <body>
 
@@ -21,7 +29,7 @@
         <li> <a href="../index.html">About</a></li>
         <li> <a href="https://github.com/Erik-Handeland">Project</a></li>
         <li> <a href="https://skookum.photography">Photography</a></li>
-        <li> <a href="contact.html">Contact</a></li>
+        <li> <a href="mailto:erik@handeland.tech">Contact</a></li>
       </ul>
     </nav>
   </div>
@@ -41,8 +49,6 @@
 
     <div class="center">
       <div class="inline-block">
-
-
 
         <h2>Work Experience</h2>
         <br>
@@ -85,6 +91,7 @@
 
       </div>
     </div>
+    <script src="/js/main.js"></script>
   </main>
 
   <footer>
