@@ -4,8 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Erik Handeland</title>
-  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <title>Education</title>
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script>
     if (
@@ -16,27 +16,18 @@
       document.documentElement.setAttribute("color-mode", "dark");
     }
   </script>
-</head>
+  </head>
 
 <body>
 
-
   <header>
     <h1>Erik Handeland</h1>
-    <div class="bottom_right">
-      <button class="color-mode__btn light--hidden" aria-label="Toggle light mode">
-        <i class="fa fa-sun-o"></i>
-      </button>
-      <button class="color-mode__btn dark--hidden" aria-label="Toggle dark mode">
-        <i class="fa fa-moon-o"></i>
-      </button>
-    </div>
   </header>
 
   <div class="nav_main">
     <nav>
       <ul>
-        <li> <a href="index.html">About</a></li>
+        <li> <a href="../index.html">About</a></li>
         <li> <a href="https://github.com/Erik-Handeland">Project</a></li>
         <li> <a href="https://skookum.photography">Photography</a></li>
         <li> <a href="mailto:erik@handeland.tech">Contact</a></li>
@@ -49,20 +40,52 @@
     <div class="nav_sub">
       <nav>
         <ul>
-          <li> <a href="html/work.html">Work Experience</a></li>
-          <li> <a href="html/education.html">Education</a></li>
-          <li> <a href="html/activities.html">Extra Currucular</a></li>
+          <li> <a href="work.html">Work Experience</a></li>
+          <li> <a href="education.html">Education</a></li>
+          <li> <a href="activities.html">Extra Currucular</a></li>
         </ul>
       </nav>
     </div>
 
     <div class="center">
       <div class="inline-block">
-        <h2>About me</h2>
+        <h2>Education</h2>
         <br>
-        <img class="head" src="images/headshot.jpg" alt="Erik Handeland" style="margin-bottom: 0.5em;">
-        <p>I'm a student at Western Washington University who is pursing my bachalors in
-          Computer Science.</p>
+        <h3>Western Washinton University</h3>
+        <br>
+        <img class="school" src="../images/WWU.png" alt="Western Washinton University"
+          style="background-color: rgb(300, 300, 300); padding: 1em;">
+        <p id="image_text">Bellingham, WA | 2019 - 2022 | Computer Science</p>
+        <ul>
+          <li>WWU Mens Rowing 2019 - Present</li>
+          <li>WWU White Board Coders 2019 - Present</li>
+        </ul>
+
+        <hr>
+
+        <h3>Washington State University</h3>
+        <br>
+        <img class="school" src="../images/WSU.png" alt="Washinton State University">
+        <p id="image_text">Pullman, WA | 2018 - 2019 | Computer Science</p>
+
+        <ul>
+          <li>WSU Cougar Crew Rowing Team 2018-2019</li>
+          <li>WSU Linux User Group 2018-2019</li>
+          <li>WSU Computer Security Group 2018-2019</li>
+        </ul>
+
+        <hr>
+
+        <h3>Mount Edgecumbe Highschool</h3> <br>
+        <img class="school" src="../images/MEHS.jpg" alt="Mt. Edgecumbe Highschool">
+        <p id="image_text">Sitka, AK | 2014 - 2018 </p>
+
+        <ul>
+          <li>President of MEHS 2017-2018</li>
+          <li>Advisory Board Student Representative 2016-2017</li>
+          <li>Technology Internship 2015-2018</li>
+          <li>MEHS Honor Student 2015-2018</li>
+        </ul>
       </div>
     </div>
     <script src="/js/main.js"></script>
@@ -81,6 +104,5 @@
     </script>
   </footer>
 </body>
-</div>
 
 </html>
