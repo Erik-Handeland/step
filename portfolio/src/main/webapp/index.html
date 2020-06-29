@@ -16,11 +16,10 @@
       document.documentElement.setAttribute("color-mode", "dark");
     }
   </script>
+  <script src="js/script.js"></script>
 </head>
 
 <body>
-
-
   <header>
     <h1>Erik Handeland</h1>
     <div class="bottom_right">
@@ -54,6 +53,13 @@
           <li> <a href="html/activities.html">Extra Currucular</a></li>
         </ul>
       </nav>
+    </div>
+
+    <div class="center" id="content">
+      <h1>Random Quotes</h1>
+      <p>Click here to see a random quote:</p>
+      <div id="quote-container"></div>
+      <button onclick="getRandomQuote()" style="color: black">Fetch a quote!</button>
     </div>
 
     <div class="center">
