@@ -33,12 +33,18 @@ import javax.servlet.http.HttpServletResponse;
 public class DataServlet extends HttpServlet {
     ArrayList<UserComment> comments = new ArrayList<UserComment>();
 
+/*
   @Override
+    // Hard Coded inputs
   public void init() {
-    UserComment temp = new UserComment("steve", "Hello World");
-    comments.add(temp);
+    UserComment temp1 = new UserComment("steve", "Hello World");
+    comments.add(temp1);
+    UserComment temp2 = new UserComment("woz", "qwerty");
+    comments.add(temp2);
+    UserComment temp3 = new UserComment("john", "ahel nfei flijnea");
+    comments.add(temp3);
   }
-
+*/
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     
@@ -47,6 +53,25 @@ public class DataServlet extends HttpServlet {
     response.setContentType("application/json;");
     response.getWriter().println(json);
   }
+
+  @Override
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+
+    UserComment temp = getUserComment(request);// Get the input from the form.
+    comments.add(temp);
+
+    // Redirect back to the HTML page.
+    response.sendRedirect("/index.html");
+  }
+
+    private UserComment getUserComment(HttpServletRequest request)
+    {
+        String userName = request.getParameter("username"); //"username" is html input name;
+        String message = request.getParameter("message");
+        UserComment temp = new UserComment(userName, message);
+        return temp;
+    }
 
   private String convertToJsonUsingGson(ArrayList<UserComment>  comments) {
     Gson gson = new Gson();
