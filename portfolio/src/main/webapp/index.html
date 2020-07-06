@@ -19,7 +19,7 @@
   <script src="js/script.js"></script>
 </head>
 
-<body>
+<body onload="getMessages()">
   <header>
     <h1>Erik Handeland</h1>
     <div class="bottom_right">
@@ -55,12 +55,23 @@
       </nav>
     </div>
 
-    <div class="center" id="content">
-      <h1>Random Quotes</h1>
-      <p>Click here to see a random quote:</p>
-      <div id="quote-container"></div>
-      <button onclick="getRandomQuote()" style="color: black">Fetch a quote!</button>
-    </div>
+    <div class="center">
+        ///////////////////////////////////////////////////////////////////////
+    <h1>Post Comment</h1>
+    <form action="/" method="POST">
+      <p>Comment:</p>
+      <label for="username">User Name:</label><br>
+       <input type="text" name="username"><br>
+
+        <label for="message">Message:</label><br>
+      <input type="text" name="message"><br>
+      <br/><br/>
+    <button onclick="getMessages()">get messages</button>
+      <input type="submit" />
+    </form>
+    <ul id="comments"></ul>
+//////////////////////////////////////////////////////////////////////////////////////
+        </div>
 
     <div class="center">
       <div class="inline-block">

@@ -12,16 +12,31 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-function getMessages() {
-    fetch('/data').then(response => response.text()).then((message) => {
-    document.getElementById('comments').innerText = message;
-  });
-}
+package com.google.sps.data;
+import java.util.Date;
 
+/** Class containing server statistics. */
+public final class UserComment {
 
-/** Creates an <li> element containing text. */
-function createListElement(text) {
-  const liElement = document.createElement('li');
-  liElement.innerText = text;
-  return liElement;
+    Date postDate;
+    String userName;
+    String userMessage;
+
+  public UserComment(String userName, String userMessage) {
+    this.postDate = new Date();
+    this.userName = userName;
+    this.userMessage = userMessage;
+  }
+
+  public Date getDate() {
+    return postDate;
+  }
+
+  public String getUserName() {
+    return userName;
+  }
+
+  public String getUserMessage() {
+    return userMessage;
+  }
 }
