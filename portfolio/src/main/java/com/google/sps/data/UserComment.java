@@ -18,22 +18,27 @@ import java.util.Date;
 /** Class containing server statistics. */
 public final class UserComment {
 
-    Date postDate;
     String userName;
+    Date postDate;
     String userMessage;
 
   public UserComment(String userName, String userMessage) {
-    this.postDate = new Date();
     this.userName = userName;
+    this.postDate = new Date();
     this.userMessage = userMessage;
   }
-
-  public Date getDate() {
-    return postDate;
+   public UserComment() {
+    this.postDate = null;
+    this.userName = null;
+    this.userMessage = null;
   }
 
   public String getUserName() {
     return userName;
+  }
+  
+  public Date getDate() {
+    return postDate;
   }
 
   public String getUserMessage() {
