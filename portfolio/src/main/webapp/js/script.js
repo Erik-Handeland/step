@@ -14,7 +14,16 @@
 
 function getMessages() {
     fetch('/data').then(response => response.text()).then((message) => {
-    document.getElementById('comments').innerText = message;
+    var data = eval(message); 
+
+    for (i in data)
+    {
+        var li = document.createElement("li");
+        li.innerHTML = "<span id='username' >" + data[i].userName+ "</span>" + "<span id='date'>   &nbsp;" + data[i].postDate + "</span> <br>" + "<span id='message'>" + data[i].userMessage + "</span>";
+        document.getElementById("comments").appendChild(li);
+
+    }
+
   });
 }
 

@@ -19,23 +19,24 @@ import java.util.Date;
 public final class UserComment {
 
     String userName;
-    long postDate;
+    Date postDate; 
     String userMessage;
 
   public UserComment(String userName, String userMessage) {
     this.userName = userName;
-    this.postDate = System.currentTimeMillis();
+
+    this.postDate = new Date();
     this.userMessage = userMessage;
   }
 
-  public UserComment(String userName, String userMessage, long time) {
+  public UserComment(String userName, String userMessage, Date time) {
     this.userName = userName;
     this.postDate = time;
     this.userMessage = userMessage;
   }
 
    public UserComment() {
-    this.postDate = 0;
+    this.postDate = null;
     this.userName = null;
     this.userMessage = null;
   }
@@ -44,7 +45,7 @@ public final class UserComment {
     return userName;
   }
 
-  public long getDate() {
+  public Date getDate() {
     return postDate;
   }
 

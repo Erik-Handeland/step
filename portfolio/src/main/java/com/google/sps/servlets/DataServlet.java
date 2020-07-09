@@ -48,14 +48,12 @@ public class DataServlet extends HttpServlet {
       
     Query query = new Query("Comments").addSort("Date", SortDirection.DESCENDING);
     PreparedQuery results = datastore.prepare(query);
-    System.out.println("test"); //prints
 
-    for (Entity entity : results.asIterable()) { //loop not running
+
+    for (Entity entity : results.asIterable()) {
       String username = (String) entity.getProperty("Username");
       String message = (String) entity.getProperty("Message");
-      long date = (long) entity.getProperty("Date");
-      System.out.println(username); //not prints
-      System.out.println("test loop");
+     Date date = (Date) entity.getProperty("Date");
       UserComment temp = new UserComment(username, message, date);
       comments.add(temp);
     }
@@ -73,7 +71,7 @@ public class DataServlet extends HttpServlet {
     //gets user data from html form
      String userName = request.getParameter("username"); //"username" is html input name;
      String message = request.getParameter("message");
-     long timestamp = System.currentTimeMillis(); //new Date()
+    Date timestamp = new Date();
 
     Entity commentEntity = new Entity("Comments"); //creates entitiy that stores properties similar to a data structure
     commentEntity.setProperty("Username", userName); //sets form data to entry
