@@ -1,3 +1,26 @@
+/*Comments section//////////////////////*/
+
+ul{
+    list-style-type: none;
+}
+
+li{
+    margin-top: 1em;
+}
+#username{
+font-size: 100%;
+font-weight: bold;
+}
+
+#date{
+font-size: 75%;
+font-style: italic;
+}
+
+#message{
+font-size: 125%;
+}
+
 
 /*Dark Mode format ///////////////////////////////////////*/
 
