@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// Messages
 function getMessages() {
     fetch('/data').then(response => response.text()).then((message) => {
     var data = eval(message); 
@@ -19,11 +20,42 @@ function getMessages() {
     for (i in data)
     {
         var li = document.createElement("li");
-        li.innerHTML = "<span id='username' >" + data[i].userName+ "</span>" + "<span id='date'>   &nbsp;" + data[i].postDate + "</span> <br>" + "<span id='message'>" + data[i].userMessage + "</span>";
+        li.innerHTML = "<span id='username' >" + data[i].userName+ "</span>" + 
+        "<span id='date'>   &nbsp;" + data[i].postDate + "</span> <br>" 
+        + "<span id='message'>" + data[i].userMessage + "</span>";
         document.getElementById("comments").appendChild(li);
 
     }
 
   });
+}
+
+
+// Charts
+
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+/** Creates a chart and adds it to the page. */
+function drawChart() {
+  const data = new google.visualization.DataTable();
+  data.addColumn('string', 'Month');
+  data.addColumn('number', 'Count');
+        data.addRows([
+          ['March', 10],
+          ['April', 5],
+          ['May', 15]
+        ]);
+
+  const options = {
+    'title': 'Comment Count',
+    'width':500,
+    'height':400
+   // 'position':center
+  };
+
+  const chart = new google.visualization.PieChart(
+      document.getElementById('chart-container'));
+  chart.draw(data, options);
 }
 

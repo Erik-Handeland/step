@@ -16,7 +16,9 @@
       document.documentElement.setAttribute("color-mode", "dark");
     }
   </script>
+  <script src="https://www.gstatic.com/charts/loader.js"></script>
   <script src="js/script.js"></script>
+
 </head>
 
 <body onload="getMessages()">
@@ -55,21 +57,6 @@
       </nav>
     </div>
 
-    <div class="center">
-    <h1>Post Comment</h1>
-    <form action="/data" method="POST">
-      <p>Comment:</p>
-      <label for="username">User Name:</label><br>
-       <input type="text" name="username"><br>
-
-        <label for="message">Message:</label><br>
-      <input type="text" name="message"><br>
-      <br/>
-      <input type="submit" />
-    </form>
-    <ul id="comments"></ul>
-
-        </div>
 
     <div class="center">
       <div class="inline-block">
@@ -79,6 +66,26 @@
         <p>I'm a student at Western Washington University who is pursing my bachalors in
           Computer Science.</p>
       </div>
+
+     
+    <div id="chart-container" align='center'></div>
+
+
+        <div class="center">
+        <h1>Post Comment</h1>
+        <form action="/data" method="POST">
+        <p>Comment:</p>
+        <label for="username">User Name:</label><br>
+        <input type="text" name="username"><br>
+
+            <label for="message">Message:</label><br>
+        <input type="text" name="message"><br>
+        <br/>
+        <input type="submit" />
+        </form>
+        <ul id="comments"></ul>
+        
+        </div>
     </div>
     <script src="/js/main.js"></script>
   </main>
