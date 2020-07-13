@@ -73,7 +73,7 @@ public class DataServlet extends HttpServlet {
 
      UserService userService = UserServiceFactory.getUserService();
      String email = userService.getCurrentUser().getEmail();
-     String userName = request.getParameter("username"); //"username" is html input name;
+    // String userName = request.getParameter("username"); //"username" is html input name;
      String message = request.getParameter("message");
     Date timestamp = new Date();
 

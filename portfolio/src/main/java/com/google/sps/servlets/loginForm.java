@@ -1,3 +1,4 @@
+
 package com.google.sps.servlets;
 
 import com.google.appengine.api.datastore.DatastoreService;
@@ -15,43 +16,37 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Date;
+@WebServlet("/login")
+public class loginForm extends HttpServlet {
 
-
-@WebServlet("/index")
-public class FormServlet extends HttpServlet {
-
-      @Override
+  @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     response.setContentType("text/html;");
     PrintWriter out = response.getWriter();
-    out.println("<h1>Shoutbox</h1>");
 
     // Only logged-in users can see the form
     UserService userService = UserServiceFactory.getUserService();
     if (userService.isUserLoggedIn()) {
-    out.println("<p>Hello " + userService.getCurrentUser().getEmail() + "!</p>");
-      out.println("<p>Type a message and click submit:</p>");
-      out.println("<form method=\"POST\" action=\"/data\">");
-      out.println("<textarea name=\"text\"></textarea>");
-      out.println("<br/>");
-      out.println("<button>Submit</button>");
-      out.println("</form>");
-    // out.getElementById("form").innerHTML = "hello";
-    /*out.getElementById("form").innerHTML = "<p>Hello <p>Type a message and click submit:</p>
-    <form action='/data' method='POST'>
-    label for='message'>Message:</label><br>
-    <input type='text' name='message'><br>
-    <br><button>Submit</button>
-    </form>"; */
-   
+     response.sendRedirect("/index.html");
+      return;
+
     } else {
-      String loginUrl = userService.createLoginURL("/shoutbox");
+      String loginUrl = userService.createLoginURL("/login");
       out.println("<p>Login <a href=\"" + loginUrl + "\">here</a>.</p>");
     }
-   
+  }
+
+  @Override
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+    UserService userService = UserServiceFactory.getUserService();
+
+    // Only logged-in users can post messages
+    if (!userService.isUserLoggedIn()) {
+      response.sendRedirect("/login");
+      return;
+    }
+
+    response.sendRedirect("/index.html");
   }
 }
-
