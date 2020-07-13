@@ -21,32 +21,28 @@ public class loginForm extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    response.setContentType("text/html;");
-    PrintWriter out = response.getWriter();
+    response.setContentType("text/html");
 
-    // Only logged-in users can see the form
     UserService userService = UserServiceFactory.getUserService();
     if (userService.isUserLoggedIn()) {
-     response.sendRedirect("/index.html");
-      return;
-
+      String userEmail = userService.getCurrentUser().getEmail();
+      String urlToRedirectToAfterUserLogsOut = "/";
+      String logoutUrl = userService.createLogoutURL(urlToRedirectToAfterUserLogsOut);
+      response.getWriter().println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\">");
+      response.getWriter().println("<div class=\"center\">");
+      response.getWriter().println("<h1>Welcome " + userEmail + "</h1>");
+      response.getWriter().println("<h3>Logout <a href=\"" + logoutUrl + "\">here</a>.</h3>");
+      response.getWriter().println("</div>");
     } else {
-      String loginUrl = userService.createLoginURL("/login");
-      out.println("<p>Login <a href=\"" + loginUrl + "\">here</a>.</p>");
+      String urlToRedirectToAfterUserLogsIn = "/";
+      String loginUrl = userService.createLoginURL(urlToRedirectToAfterUserLogsIn);
+
+      response.getWriter().println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\">");
+      response.getWriter().println("<div class=\"center\">");
+      response.getWriter().println("<h2>You must login inorder to submit a comment</h2>");
+      response.getWriter().println("<h3>Login <a href=\"" + loginUrl + "\">here</a>.</h3>");
+      response.getWriter().println("</div>");
     }
-  }
-
-  @Override
-  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
-    UserService userService = UserServiceFactory.getUserService();
-
-    // Only logged-in users can post messages
-    if (!userService.isUserLoggedIn()) {
-      response.sendRedirect("/login");
-      return;
-    }
-
-    response.sendRedirect("/index.html");
   }
 }
+

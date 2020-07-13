@@ -69,22 +69,27 @@ public class DataServlet extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-    //gets user data from html form
+    UserService userService = UserServiceFactory.getUserService();
+    if (userService.isUserLoggedIn()) {
+        //gets user data from html form
+        String email = userService.getCurrentUser().getEmail();
+        // String userName = request.getParameter("username"); //"username" is html input name;
+        String message = request.getParameter("message");
+        Date timestamp = new Date();
 
-     UserService userService = UserServiceFactory.getUserService();
-     String email = userService.getCurrentUser().getEmail();
-    // String userName = request.getParameter("username"); //"username" is html input name;
-     String message = request.getParameter("message");
-    Date timestamp = new Date();
+        Entity commentEntity = new Entity("Comments"); //creates entitiy that stores properties similar to a data structure
+        commentEntity.setProperty("Username", email); //sets form data to entry
+        commentEntity.setProperty("Message", message);
+        commentEntity.setProperty("Date", timestamp);
 
-    Entity commentEntity = new Entity("Comments"); //creates entitiy that stores properties similar to a data structure
-    commentEntity.setProperty("Username", email); //sets form data to entry
-    commentEntity.setProperty("Message", message);
-    commentEntity.setProperty("Date", timestamp);
+        datastore.put(commentEntity); //pushes new comment to datastore
 
-    datastore.put(commentEntity); //pushes new comment to datastore
+        response.sendRedirect("/index.html");
 
-    response.sendRedirect("/index.html");
+    } else {
+      response.sendRedirect("/login");
+    }
+
   }
 
   private String convertToJsonUsingGson(ArrayList<UserComment>  comments) {
