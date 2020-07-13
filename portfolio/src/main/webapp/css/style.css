@@ -479,6 +479,10 @@ nav a:hover {
     left:0;
   }
 }
+/*API styling*/
+.hidden {
+        display: none;
+      }
 
 
 

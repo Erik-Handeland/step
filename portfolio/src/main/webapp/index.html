@@ -16,7 +16,6 @@
       document.documentElement.setAttribute("color-mode", "dark");
     }
   </script>
-  <script src="https://www.gstatic.com/charts/loader.js"></script>
   <script src="js/script.js"></script>
 
 </head>
@@ -41,6 +40,7 @@
         <li> <a href="https://github.com/Erik-Handeland">Project</a></li>
         <li> <a href="https://skookum.photography">Photography</a></li>
         <li> <a href="mailto:erik@handeland.tech">Contact</a></li>
+        <li> <a href="html/testing.html">Testing</a></li>
       </ul>
     </nav>
   </div>
@@ -67,13 +67,9 @@
           Computer Science.</p>
       </div>
 
-     
-    <div id="chart-container" align='center'></div>
-
-
-        <div class="center">
+        <div id="form">
         <h1>Post Comment</h1>
-        <form action="/data" method="POST">
+        <form action="/data" method="POST">S
         <p>Comment:</p>
         <label for="username">User Name:</label><br>
         <input type="text" name="username"><br>
@@ -83,8 +79,8 @@
         <br/>
         <input type="submit" />
         </form>
+
         <ul id="comments"></ul>
-        
         </div>
     </div>
     <script src="/js/main.js"></script>
