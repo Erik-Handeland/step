@@ -42,6 +42,7 @@ public final class FindMeetingQuery {
         timeAvailable = getAvailableTimes(events, request, timeAvailable);
 
         potentialTimes = getPotentialTimes(timeAvailable, request); 
+
         return potentialTimes;
     }
 
