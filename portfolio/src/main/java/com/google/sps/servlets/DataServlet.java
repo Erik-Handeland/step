@@ -35,7 +35,9 @@ import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
 
-/** Servlet that returns some example content. TODO: modify this file to handle comments data */
+import com.google.appengine.api.users.UserService;
+import com.google.appengine.api.users.UserServiceFactory;
+
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
     ArrayList<UserComment> comments = new ArrayList<UserComment>();
@@ -48,7 +50,6 @@ public class DataServlet extends HttpServlet {
       
     Query query = new Query("Comments").addSort("Date", SortDirection.DESCENDING);
     PreparedQuery results = datastore.prepare(query);
-
 
     for (Entity entity : results.asIterable()) {
       String username = (String) entity.getProperty("Username");
@@ -68,19 +69,27 @@ public class DataServlet extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-    //gets user data from html form
-     String userName = request.getParameter("username"); //"username" is html input name;
-     String message = request.getParameter("message");
-    Date timestamp = new Date();
+    UserService userService = UserServiceFactory.getUserService();
+    if (userService.isUserLoggedIn()) {
+        //gets user data from html form
+        String email = userService.getCurrentUser().getEmail();
+        // String userName = request.getParameter("username"); //"username" is html input name;
+        String message = request.getParameter("message");
+        Date timestamp = new Date();
 
-    Entity commentEntity = new Entity("Comments"); //creates entitiy that stores properties similar to a data structure
-    commentEntity.setProperty("Username", userName); //sets form data to entry
-    commentEntity.setProperty("Message", message);
-    commentEntity.setProperty("Date", timestamp);
+        Entity commentEntity = new Entity("Comments"); //creates entitiy that stores properties similar to a data structure
+        commentEntity.setProperty("Username", email); //sets form data to entry
+        commentEntity.setProperty("Message", message);
+        commentEntity.setProperty("Date", timestamp);
 
-    datastore.put(commentEntity); //pushes new comment to datastore
+        datastore.put(commentEntity); //pushes new comment to datastore
 
-    response.sendRedirect("/index.html");
+        response.sendRedirect("/index.html");
+
+    } else {
+      response.sendRedirect("/login");
+    }
+
   }
 
   private String convertToJsonUsingGson(ArrayList<UserComment>  comments) {

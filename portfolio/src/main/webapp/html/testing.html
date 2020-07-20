@@ -1,11 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Erik Handeland</title>
-  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <title>Testing</title>
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script>
     if (
@@ -16,32 +17,23 @@
       document.documentElement.setAttribute("color-mode", "dark");
     }
   </script>
-  <script src="js/script.js"></script>
+  <script src="https://www.gstatic.com/charts/loader.js"></script>
+  <script src="../js/script.js"></script>
+  </head>
 
-</head>
+<body onload="fetchBlobstoreUrlAndShowForm()">
 
-<body onload="getMessages()">
   <header>
     <h1>Erik Handeland</h1>
-    <div class="bottom_right">
-      <button class="color-mode__btn light--hidden" aria-label="Toggle light mode">
-        <i class="fa fa-sun-o"></i>
-      </button>
-      <button class="color-mode__btn dark--hidden" aria-label="Toggle dark mode">
-        <i class="fa fa-moon-o"></i>
-      </button>
-    </div>
   </header>
 
   <div class="nav_main">
     <nav>
       <ul>
-        <li> <a href="index.html">About</a></li>
+        <li> <a href="../index.html">About</a></li>
         <li> <a href="https://github.com/Erik-Handeland">Project</a></li>
         <li> <a href="https://skookum.photography">Photography</a></li>
         <li> <a href="mailto:erik@handeland.tech">Contact</a></li>
-        <li> <a href="html/testing.html">Testing</a></li>
-        <li> <a href="/login">Login</a></li>
       </ul>
     </nav>
   </div>
@@ -51,37 +43,31 @@
     <div class="nav_sub">
       <nav>
         <ul>
-          <li> <a href="html/work.html">Work Experience</a></li>
-          <li> <a href="html/education.html">Education</a></li>
-          <li> <a href="html/activities.html">Extra Currucular</a></li>
+          <li> <a href="work.html">Work Experience</a></li>
+          <li> <a href="education.html">Education</a></li>
+          <li> <a href="activities.html">Extra Currucular</a></li>
         </ul>
       </nav>
     </div>
 
+        <div class="center">
+            <div id="chart-container" align='center'></div>
 
-    <div class="center">
-      <div class="inline-block">
-        <h2>About me</h2>
-        <br>
-        <img class="head" src="images/headshot.jpg" alt="Erik Handeland" style="margin-bottom: 0.5em;">
-        <p>I'm a student at Western Washington University who is pursing my bachalors in
-          Computer Science.</p>
-      </div>
+            <h1>Blobstore Fetch Example</h1>
+            <p>Type a message and click submit:</p>
 
-        <div class="" id="form">
-        <h1>Post Comment</h1>
-        <form action="/data" method="POST">
-        <p>Comment:</p>
-            <label for="message">Message:</label><br>
-        <input type="text" name="message"><br>
-        <br/>
-        <input type="submit" />
-        </form>
-
-        <ul id="comments"></ul>
+            <form id="my-form" class="hidden" method="POST" enctype="multipart/form-data">
+            <p>Type some text:</p>
+            <textarea name="message"></textarea>
+            <br/>
+            <p>Upload an image:</p>
+            <input type="file" name="image">
+            <br/><br/>
+            <button>Submit</button>
+            </form>
         </div>
     </div>
-    <script src="/js/main.js"></script>
+    <script src="../js/main.js"></script>
   </main>
 
   <footer>
@@ -97,6 +83,5 @@
     </script>
   </footer>
 </body>
-</div>
 
 </html>
